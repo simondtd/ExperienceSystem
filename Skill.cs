@@ -28,7 +28,7 @@ namespace ExperienceSystem
         public float Exponential => _exponential;
         public int Level => ExperienceToLevel(_experience);
 
-        public int LevelToExperience(int level)
+        public int MaxExperienceForLevel(int level)
         {
             if (level <= 0)
                 return 0;
@@ -37,13 +37,22 @@ namespace ExperienceSystem
             return (int)experience;
         }
 
+        public int LevelToExperience(int level)
+        {
+            var experience = 0;
+            for(int i = 0; i <= level; i++) {
+                experience += MaxExperienceForLevel(i);
+            }
+            return experience;
+        }
+
         public int ExperienceToLevel(int experience)
         {
             var level = 0;
 
             while (experience >= 0)
             {
-                experience -= LevelToExperience(level);
+                experience -= MaxExperienceForLevel(level);
                 if (experience >= 0)
                     level++;
             }

@@ -7,7 +7,7 @@ namespace ExperienceSystem
         static void Main(string[] args)
         {
             Skill skill = new Skill(100, 1.09f);
-            Console.WriteLine(skill.ExperienceToLevel(int.MaxValue));
+            Console.WriteLine(skill.LevelToExperience(0));
         }
     }
 }
